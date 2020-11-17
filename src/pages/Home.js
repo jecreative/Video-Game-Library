@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loadGames } from '../redux/actions/gamesActions'
 //* Components
 import Game from '../components/Game'
+import Loader from '../components/Loader'
 //* Styled Components
 import styled from 'styled-components'
 //* Framer Motion
@@ -13,15 +14,17 @@ import { motion } from 'framer-motion'
 const Home = () => {
   const dispatch = useDispatch()
 
-  const { popular, newGames, upcoming } = useSelector((state) => state.games)
-  if (popular.length !== 0) {
-    console.log(popular)
-  }
+  const { popular, newGames, upcoming, loading } = useSelector(
+    (state) => state.games
+  )
 
   useEffect(() => {
     dispatch(loadGames())
   }, [dispatch])
-  return (
+
+  return loading ? (
+    <Loader />
+  ) : (
     <GameList>
       <h2>Upcoming Games</h2>
       <Games>
@@ -29,7 +32,7 @@ const Home = () => {
           <Game
             name={game.name}
             released={game.released}
-            game={game.id}
+            id={game.id}
             background={game.background_image}
             key={game.id}
           />
