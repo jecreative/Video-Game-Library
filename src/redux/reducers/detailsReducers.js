@@ -6,7 +6,10 @@ import {
 } from '../types/detailsTypes'
 
 //* Initial State
-const initialState = { game: {}, screenshots: {}, loading: false }
+const initialState = {
+  game: { platforms: [] },
+  screenshots: { results: [] },
+}
 
 //* Reducer
 const detailsReducer = (state = initialState, action) => {
@@ -18,7 +21,7 @@ const detailsReducer = (state = initialState, action) => {
     case FETCH_DETAILS_SUCCESS:
       return {
         ...state,
-        game: action.payload,
+        game: action.payload.game,
         screenshots: action.payload.screenshots,
         loading: false,
       }

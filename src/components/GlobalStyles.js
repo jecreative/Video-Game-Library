@@ -13,6 +13,9 @@ const GlobalStyle = createGlobalStyle`
     &::-webkit-scrollbar-thumb{
       background-color: darkgrey;
     }
+    &::-webkit-scrollbar-track {
+    background: white;
+  }
   }
   body {
     font-family: 'Montserrat', sans-serif;
@@ -23,20 +26,30 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Abril Fatface', cursive;
     font-weight: lighter;
     color: #333;
+    @media(max-width: 768px){
+      font-size: 1.5rem;
+    }
   }
   h3 {
     font-size: 1.3rem;
     color: #333;
-    padding: 1rem;
+    padding: 1rem 0rem;
+    @media(max-width: 768px){
+      font-size: 1rem;
+    }
   }
   p {
     font-size: 1rem;
     line-height: 200%;
     color: #696969;
+    @media(max-width: 768px){
+      font-size: .8rem;
+    }
   }
   a {
     text-decoration: none;
     color: #333;
   }
+  img { display: block}
 `
 export default GlobalStyle
